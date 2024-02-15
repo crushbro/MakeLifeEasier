@@ -1,3 +1,4 @@
+# Ping IPs to grab their name to make them more easily identifiable. 
 # Import the subprocess and sys modules
 import subprocess
 import sys
@@ -11,7 +12,7 @@ with open(file_name) as f:
     for line in f:
         # Strip the newline character and store the IP address
         ip = line.strip()
-        # Run the ping command with the -a switch and capture the output
+        # Run the ping command with the -a switch and capture the output. -n 1 to only ping once, to save time
         output = subprocess.run(["ping", "-a", "-n", "1", ip], capture_output=True, text=True)
         # Check if the ping was successful
         if "Reply from" in output.stdout:
